@@ -1,4 +1,5 @@
 import os
+from trendsetter import models
 from flask import Flask, request
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -7,7 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-def post_ideas(username, idea, device_id):
+def post_ideas(username, idea):
     """
     Write a single idea to the database.
 
@@ -17,7 +18,12 @@ def post_ideas(username, idea, device_id):
      * device_id: The ID for the device the idea was submitted
        from.
     """
-    return "Nothing yet..."
+    insert = models.Idea.insert()
+    db.session.execute(insert,
+                       username=username,
+                       idea=idea)
+    return "Insert happened successfully?"
+
 
 @app.route("/")
 def hello():
@@ -29,8 +35,7 @@ def post():
     if request.method == "POST":
         return post_ideas(
             request.form["username"],
-            request.form["idea"],
-            request.form["device_id"]
+            request.form["idea"]
             )
     else:
         return "No post stuff?"
