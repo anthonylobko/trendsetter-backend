@@ -5,11 +5,12 @@ from sqlalchemy import Column, \
     Text, \
     ForeignKey
 from sqlalchemy.orm import relationship
+from trendsetter.api import db
 
 Base = declarative_base()
 
 
-class Idea(Base):
+class Idea(db.Model):
     """
     A representation of a single idea.
     """
@@ -27,7 +28,7 @@ class Idea(Base):
                   nullable=False)
 
 
-class User(Base):
+class User(db.Model):
     """
     A single user in the system
     """
