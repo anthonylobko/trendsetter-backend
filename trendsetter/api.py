@@ -1,8 +1,8 @@
 import os
 from flask import Flask
 
-APP = Flask(__name__)
+app = Flask(__name__)
 
-@APP.route("/")
+@app.route("/")
 def hello():
     return "Hello world!"
