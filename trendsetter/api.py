@@ -17,6 +17,7 @@ def post_ideas(username, idea, device_id):
      * device_id: The ID for the device the idea was submitted
        from.
     """
+    return "Nothing yet..."
 
 @app.route("/")
 def hello():
@@ -27,8 +28,8 @@ def hello():
 def post():
     if request.method == "POST":
         return post_ideas(
-            request.form["username"]
-            request.form{"idea"]
+            request.form["username"],
+            request.form["idea"],
             request.form["device_id"]
             )
     else:
