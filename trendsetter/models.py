@@ -5,7 +5,7 @@ from sqlalchemy import Column, \
     Text, \
     ForeignKey
 from sqlalchemy.orm import relationship
-from trendsetter.api import db
+from trendsetter.setup import db
 
 Base = declarative_base()
 

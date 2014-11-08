@@ -1,13 +1,7 @@
 import os
+from flask import request
 from trendsetter import models
-from flask import Flask, request
-from flask.ext.sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.debug = True
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
-db = SQLAlchemy(app)
-
+from setup import app, db
 
 def post_ideas(username, idea):
     """
