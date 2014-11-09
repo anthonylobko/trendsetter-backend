@@ -46,6 +46,9 @@ def post():
     else:
         return "No post stuff?"
 
+Base = declarative_base()
+
+Base.metadata.create_all(db)
 
 class Idea(db.Model):
     """
