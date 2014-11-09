@@ -58,26 +58,26 @@ class Idea(db.Model):
                 nullable=False)
 
     username = Column(String(256),
-                      ForeignKey("User.username"),
+#                      ForeignKey("User.username"),
                       nullable=False)
 
     idea = Column(Text,
                   nullable=False)
 
 
-class User(db.Model):
-    """
-    A single user in the system
-    """
-    __tablename__ = 'users'
+# class User(db.Model):
+#     """
+#     A single user in the system
+#     """
+#     __tablename__ = 'users'
 
 
-    id = Column(Integer,
-                primary_key=True,
-                nullable=False)
+#     id = Column(Integer,
+#                 primary_key=True,
+#                 nullable=False)
 
-    username = Column(String(256),
-                      unique=True,
-                      nullable=False)
+#     username = Column(String(256),
+#                       unique=True,
+#                       nullable=False)
 
-    ideas = relationship("Idea.username")
+#     ideas = relationship("Idea.username")
