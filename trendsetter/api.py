@@ -48,7 +48,7 @@ def post():
 
 Base = declarative_base()
 
-Base.metadata.create_all(db)
+Base.metadata.create_all(db.session)
 
 class Idea(db.Model):
     """
