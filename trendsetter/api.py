@@ -2,6 +2,7 @@ import os
 from flask import Flask, request
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
 from sqlalchemy import Column, \
     Integer,\
     String, \
@@ -47,13 +48,7 @@ def post():
         return "No post stuff?"
 
 Base = declarative_base()
-Engine = sqlalchemy.create_engine( os.environ['DATABASE_URL'] )
-from sqlalchemy import Column, \
-    Integer,\
-    String, \
-    Text, \
-    ForeignKey
-from sqlalchemy.orm import relationship
+Engine = create_engine( os.environ['DATABASE_URL'] )
 Base.metadata.create_all(Engine)
 
 class Idea(db.Model):
