@@ -46,7 +46,7 @@ def get(limit, offset):
             {"username": item.username,
              "idea": item.idea}
             for item
-            in session.query(Idea).order_by(Idea.id)
+            in db.session.query(Idea).order_by(Idea.id)
             [offset:offset + limit]
         ]
     )
