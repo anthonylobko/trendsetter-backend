@@ -43,7 +43,8 @@ def hello():
 def get(limit, offset):
     return json.dumps(
         [
-            {"username": item.username,
+            {"id": item.id,
+             "username": item.username,
              "idea": item.idea}
             for item
             in db.session.query(Idea).order_by(Idea.id)
