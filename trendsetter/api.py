@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 db = SQLAlchemy(app)
 
 
-def post_ideas(username, idea):
+def post_ideas(username, idea, timestamp):
     """
     Write a single idea to the database.
 
@@ -28,7 +28,9 @@ def post_ideas(username, idea):
      * device_id: The ID for the device the idea was submitted
        from.
     """
-    insert = Idea(username=username, idea=idea)
+    insert = Idea(username=username,
+                  idea=idea,
+                  timestamp=timestamp)
     db.session.add(insert)
     db.session.commit()
     return "Insert happened successfully?"
@@ -58,11 +60,20 @@ def post():
     if request.method == "POST":
         return post_ideas(
             request.form["username"],
-            request.form["idea"]
+            request.form["idea"],
+            request.form["timestamp"]
             )
     else:
         return "No post stuff?"
 
+
+@app.route("/up/<int:id>")
+def up(id):
+    pass
+
+@app.route("/down/<int:id>")
+def down(id):
+    pass
 
 class Idea(db.Model):
     """
@@ -79,3 +90,14 @@ class Idea(db.Model):
 
     idea = Column(Text,
                   nullable=False)
+
+    up = Column(Integer,
+                nullable=False,
+                default=0)
+
+    down = Column(Integer,
+                  nullable=False,
+                  default=0)
+
+    timestamp = Column(Integer,
+                       nullable=False)
