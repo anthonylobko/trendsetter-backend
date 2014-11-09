@@ -47,8 +47,14 @@ def post():
         return "No post stuff?"
 
 Base = declarative_base()
-
-Base.metadata.create_all(db.session)
+Engine = create_engine( os.environ['DATABASE_URL'] )
+from sqlalchemy import Column, \
+    Integer,\
+    String, \
+    Text, \
+    ForeignKey
+from sqlalchemy.orm import relationship
+Base.metadata.create_all(Engine)
 
 class Idea(db.Model):
     """
