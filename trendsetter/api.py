@@ -47,10 +47,6 @@ def post():
     else:
         return "No post stuff?"
 
-Base = declarative_base()
-Engine = create_engine( os.environ['DATABASE_URL'] )
-Base.metadata.create_all(Engine)
-
 class Idea(db.Model):
     """
     A representation of a single idea.
@@ -68,6 +64,10 @@ class Idea(db.Model):
     idea = Column(Text,
                   nullable=False)
 
+
+Base = declarative_base()
+Engine = create_engine( os.environ['DATABASE_URL'] )
+Base.metadata.create_all(Engine)
 
 # class User(db.Model):
 #     """
