@@ -25,10 +25,9 @@ def post_ideas(username, idea):
      * device_id: The ID for the device the idea was submitted
        from.
     """
-    insert = Idea.insert()
-    db.session.execute(insert,
-                       username=username,
-                       idea=idea)
+    insert = Idea(username=username, idea=idea)
+    db.session.add(insert)
+    db.session.commit()
     return "Insert happened successfully?"
 
 
