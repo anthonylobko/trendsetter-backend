@@ -25,7 +25,7 @@ def post_ideas(username, idea):
      * device_id: The ID for the device the idea was submitted
        from.
     """
-    insert = models.Idea.insert()
+    insert = Idea.insert()
     db.session.execute(insert,
                        username=username,
                        idea=idea)
