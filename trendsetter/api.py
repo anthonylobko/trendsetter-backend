@@ -46,6 +46,7 @@ def post():
     else:
         return "No post stuff?"
 
+
 class Idea(db.Model):
     """
     A representation of a single idea.
@@ -79,4 +80,4 @@ class User(db.Model):
                       unique=True,
                       nullable=False)
 
-    ideas = relationship("Idea")
+    ideas = relationship("Idea.username")
